@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let scale = 1;
     let locations = [];
 
-        fetch('/api/locations')
+    fetch('/api/locations')
         .then(response => {
             if (!response.ok) throw new Error('Erro ao carregar dados');
             return response.json();
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             intermediateSelect.add(option3);
         });
     }
-    
+
     mapBtn.addEventListener('click', () => {
         modal.style.display = 'block';
         scale = 1;
@@ -83,3 +83,38 @@ document.addEventListener('DOMContentLoaded', function () {
         mapImage.style.transform = `scale(${scale})`;
     });
 
+    calculateBtn.addEventListener('click', calculatePath);
+    resetBtn.addEventListener('click', resetForm);
+
+    function calculatePath() {
+        const start = parseInt(startSelect.value);
+        const end = parseInt(endSelect.value);
+        const intermediates = Array.from(intermediateSelect.selectedOptions)
+            .map(opt => parseInt(opt.value));
+
+        if (!start || !end) {
+            alert('Selecione pelo menos o ponto de partida e de chegada.');
+            return;
+        }
+
+        if (start === end) {
+            alert('Partida e chegada não podem ser iguais.');
+            return;
+        }
+
+        const pointsToVisit = [start, ...intermediates, end];
+        const uniquePoints = [...new Set(pointsToVisit)];
+
+        if (uniquePoints.length < 2) {
+            alert('Selecione pelo menos dois pontos distintos.');
+            return;
+        }
+
+        loadingIndicator.style.display = 'block';
+        pathResult.innerHTML = '';
+        distanceResult.innerHTML = '';
+        pathDetails.innerHTML = '';
+
+        calculateFullPath(uniquePoints);
+    }
+});
