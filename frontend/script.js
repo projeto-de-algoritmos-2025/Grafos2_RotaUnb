@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function populateSelects() {
         startSelect.innerHTML = '<option value="">Selecione...</option>';
         endSelect.innerHTML = '<option value="">Selecione...</option>';
-        intermediateSelect.innerHTML = '';
+        const intermediateContainer = document.getElementById('intermediate-points-container');
+        intermediateContainer.innerHTML = '';
 
         locations.sort((a, b) => a.índice - b.índice);
 
@@ -44,11 +45,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const option1 = new Option(optionText, location.índice);
             const option2 = new Option(optionText, location.índice);
-            const option3 = new Option(optionText, location.índice);
-
             startSelect.add(option1);
             endSelect.add(option2);
-            intermediateSelect.add(option3);
+
+            const checkboxItem = document.createElement('div');
+            checkboxItem.className = 'checkbox-item';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `intermediate-${location.índice}`;
+            checkbox.value = location.índice;
+
+            const label = document.createElement('label');
+            label.htmlFor = `intermediate-${location.índice}`;
+            label.textContent = optionText;
+
+            checkboxItem.appendChild(checkbox);
+            checkboxItem.appendChild(label);
+            intermediateContainer.appendChild(checkboxItem);
         });
     }
 
@@ -89,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function calculatePath() {
         const start = parseInt(startSelect.value);
         const end = parseInt(endSelect.value);
-        const intermediates = Array.from(intermediateSelect.selectedOptions)
-            .map(opt => parseInt(opt.value));
+        const intermediates = Array.from(document.querySelectorAll('#intermediate-points-container input[type="checkbox"]:checked'))
+            .map(checkbox => parseInt(checkbox.value));
 
         if (!start || !end) {
             alert('Selecione pelo menos o ponto de partida e de chegada.');
@@ -241,7 +255,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function resetForm() {
         startSelect.value = '';
         endSelect.value = '';
-        intermediateSelect.selectedIndex = -1;
+        document.querySelectorAll('#intermediate-points-container input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = false;
+        });
         pathResult.innerHTML = '<p>Selecione os pontos e clique em "Calcular Rota"</p>';
         distanceResult.innerHTML = '';
         pathDetails.innerHTML = '';
