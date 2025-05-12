@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, jsonify
+
 from flask_cors import CORS
 import os
 import json
@@ -19,3 +20,11 @@ def load_campus_data():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/api/locations')
+def get_locations():
+    try:
+        data = load_campus_data()
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
