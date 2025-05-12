@@ -19,8 +19,99 @@
     </nav>
 
     <div class="container">
-        <h2>Informações sobre o Campus</h2>
+        <h2 style="color: rgb(50, 60, 112);">Informações sobre o Campus</h2>
+        <br>
+        <div class="info">
+            <p>O Sistema <a style="color:  rgb(50, 60, 112) ; font-weight: bolder;">RotaUnB</a> foi desenvolvido com o propósito de ajudar e facilitar calouros, turistas ou pessoas que tem dúvidas sobre como caminhar no campus Darcy Ribeiro.</p>
+            <p>A recomendação é baseada na construção de um Grafo inspirado no <a href="https://noticias.unb.br/images/mapas_campi_unb.pdf" style="color: rgb(50, 60, 112);">mapa do campus</a>. As possíveis rotas levam dois principais critérios em consideração: </p>
+                <p><a style="color:  rgb(50, 60, 112) ; font-weight: bolder;">1 -</a> A menor rota entre dois pontos é uma reta</p>
+                <p><a style="color:  rgb(50, 60, 112) ; font-weight: bolder;">2 -</a> As retas não podem passar por dentro de outras construções</p>
+                <p><a style="color:  rgb(50, 60, 112) ; font-weight: bolder;">3 -</a> As retas não podem passar por áreas "desertas</p>
+            <p>Também é importante ressaltar sobre a escala: os pesos das arestas do Grafo foram medidos em centímetros, portanto, para a conversão final usou-se a escala real em que 1cm = 160m, chegando ao seguinte resultado:</p>
+            <p style="font-weight: bolder;">distMetros = 160 × distCm</p>
+            <p><a style="color: red; font-weight: bolder;">Atenção</a>: o sistema já faz essa conversão automaticamente!</p>
+            <p>Clique no Grafo para visualização ampliada:</p>
+        </div>
+        <div class="img-graph">
+            <br>
+            <p></p>
+            <img src="./grafo.jpg" alt="Grafo UnB" class="campus-graph">
+            <div id="graph-modal" class="modal">
+                <span class="close">&times;</span>
+                <div class="modal-content">
+                    <img id="graph-image" src="./grafo.jpg" alt="Grafo UnB Ampliado" class="full-graph">
+                    <div class="zoom-controls">
+                        <button id="zoom-in-graph" class="zoom-btn">+</button>
+                        <button id="zoom-out-graph" class="zoom-btn">−</button>
+                        <button id="reset-zoom-graph" class="zoom-btn">⟲</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         
     </div>
+    <script>
+        // Controles do modal do grafo
+        const graphModal = document.getElementById("graph-modal");
+        const graphImg = document.getElementById("graph-image");
+        const graphZoomIn = document.getElementById("zoom-in-graph");
+        const graphZoomOut = document.getElementById("zoom-out-graph");
+        const graphResetZoom = document.getElementById("reset-zoom-graph");
+        let graphScale = 1;
+    
+        // Abrir modal ao clicar na imagem
+        document.querySelector('.campus-graph').addEventListener('click', function() {
+            graphModal.style.display = "block";
+            graphScale = 1;
+            graphImg.style.transform = `scale(${graphScale})`;
+        });
+    
+        // Fechar modal
+        document.querySelector('.close').addEventListener('click', function() {
+            graphModal.style.display = "none";
+        });
+    
+        // Zoom in
+        graphZoomIn.addEventListener('click', function() {
+            graphScale += 0.2;
+            graphImg.style.transform = `scale(${graphScale})`;
+        });
+    
+        // Zoom out
+        graphZoomOut.addEventListener('click', function() {
+            graphScale = Math.max(0.5, graphScale - 0.2);
+            graphImg.style.transform = `scale(${graphScale})`;
+        });
+    
+        // Reset zoom
+        graphResetZoom.addEventListener('click', function() {
+            graphScale = 1;
+            graphImg.style.transform = `scale(${graphScale})`;
+        });
+    
+        // Fechar ao clicar fora da imagem
+        window.addEventListener('click', function(event) {
+            if (event.target === graphModal) {
+                graphModal.style.display = "none";
+            }
+        });
+    
+        // Zoom com roda do mouse
+        graphImg.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            const zoomIntensity = 0.1;
+            
+            if (e.deltaY < 0) {
+                // Zoom in
+                graphScale += zoomIntensity;
+            } else {
+                // Zoom out
+                graphScale = Math.max(0.5, graphScale - zoomIntensity);
+            }
+            
+            graphImg.style.transform = `scale(${graphScale})`;
+        });
+    </script>
 </body>
 </html>
