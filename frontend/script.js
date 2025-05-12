@@ -17,3 +17,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let scale = 1;
     let locations = [];
+
+        fetch('/api/locations')
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao carregar dados');
+            return response.json();
+        })
+        .then(data => {
+            locations = data;
+            populateSelects();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            pathResult.innerHTML = `<p class="error">Erro ao carregar locais: ${error.message}</p>`;
+        });
+
+    function populateSelects() {
+        startSelect.innerHTML = '<option value="">Selecione...</option>';
+        endSelect.innerHTML = '<option value="">Selecione...</option>';
+        intermediateSelect.innerHTML = '';
+
+        locations.sort((a, b) => a.índice - b.índice);
+
+        locations.forEach(location => {
+            const optionText = `(${location.índice}) - ${location.sigla}`;
+
+            const option1 = new Option(optionText, location.índice);
+            const option2 = new Option(optionText, location.índice);
+            const option3 = new Option(optionText, location.índice);
+
+            startSelect.add(option1);
+            endSelect.add(option2);
+            intermediateSelect.add(option3);
+        });
+    }
+
