@@ -54,7 +54,7 @@ Caso tenha alguma dúvida sobre o sistema, basta acessar a aba Informações na 
 
 ## Outros 
 Link do Repositório: https://github.com/projeto-de-algoritmos-2025/Grafos2_RotaUnb
-Link do Vídeo de Apresentação: preencher
+Link do Vídeo de Apresentação: https://youtu.be/_9R8MkSSZOA
 Link do mapa do campus Darcy Ribeiro (UnB): https://noticias.unb.br/images/mapas_campi_unb.pdf
 
 
