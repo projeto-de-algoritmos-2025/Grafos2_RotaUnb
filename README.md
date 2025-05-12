@@ -41,7 +41,7 @@ Atenção: o sistema já faz essa conversão automaticamente!
 ## Instalação 
 **Linguagem**: Python, Javascript,HTML, CSS <br>
 **Pré-Requisitos**: Ter Python instalado na máquina e rodar o requirements.txt<br>
-**Passo a Passo:**: Rodar no terminal:
+**Passo a Passo:**: Rodar no terminal:<br>
 **1** - pip install -r requirements.txt<br>
 **2** - python3 backend/server.py
 
