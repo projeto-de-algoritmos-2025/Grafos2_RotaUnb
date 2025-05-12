@@ -124,7 +124,7 @@ select[multiple] {
 }
 
 .btn.primary:hover {
-    background-color: var(--primary-light);
+    background-color: rgb(50, 60, 112);
 }
 
 .btn.secondary {
