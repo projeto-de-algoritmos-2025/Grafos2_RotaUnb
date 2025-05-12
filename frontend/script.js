@@ -1,0 +1,19 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const startSelect = document.getElementById('start-point');
+    const endSelect = document.getElementById('end-point');
+    const intermediateSelect = document.getElementById('intermediate-points');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const pathResult = document.getElementById('path-result');
+    const mapBtn = document.getElementById('map-btn');
+    const modal = document.getElementById('map-modal');
+    const closeModal = document.getElementById('close-modal');
+    const mapImage = document.getElementById('map-image');
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+    const distanceResult = document.getElementById('distance-result');
+    const pathDetails = document.getElementById('path-details');
+    const loadingIndicator = document.getElementById('loading');
+
+    let scale = 1;
+    let locations = [];
