@@ -15,7 +15,7 @@ class Graph:
     def get_neighbors(self, vertex):
         return self.vertices.get(vertex, {}).items()
     
-    def dijkstra(graph, start):
+def dijkstra(graph, start):
         distances = {v: float('infinity') for v in graph.vertices}
         previous_nodes = {v: None for v in graph.vertices}
         distances[start] = 0

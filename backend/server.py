@@ -11,9 +11,6 @@ JSON_PATH = os.path.join(BASE_DIR, '../data/grafo.json')
 app = Flask(__name__, static_folder='../frontend', static_url_path='', template_folder='../frontend')
 CORS(app)
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
-
 def load_campus_data():
     with open(JSON_PATH, 'r', encoding='utf-8') as f:
         return json.load(f)
@@ -77,3 +74,7 @@ def calculate_path():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
