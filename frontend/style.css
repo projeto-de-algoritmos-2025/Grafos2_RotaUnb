@@ -19,12 +19,19 @@ body {
     background-color: #f5f5f5;
     color: var(--dark);
     line-height: 1.6;
-}
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}   
 
 .container {
-    max-width: 1200px;
+    max-width: 2500px;
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    min-height: 100vh;
 }
 
 header {
@@ -43,6 +50,10 @@ header h1 {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    width: 100%; /* Alterado de 80vw para 100% */
+    max-width: 1200px; /* Limita a largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza os painéis internos */
 }
 
 .controls-panel {
@@ -301,3 +312,60 @@ select[multiple] {
     background: #555;
 }
 
+.legend-panel {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.legend-panel ol {
+    padding-left: 20px;
+}
+
+.legend-panel {
+    flex: 1;
+    min-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-height: 60vh; /* Altura máxima de 60% da viewport */
+    overflow-y: auto; /* Habilita scroll vertical quando necessário */
+    display: flex;
+    flex-direction: column;
+}
+
+.legend-panel ol {
+    padding-left: 40px;
+    margin: 0; /* Remove margens padrão */
+    overflow-y: auto; /* Scroll para a lista */
+    flex-grow: 1; /* Ocupa todo o espaço disponível */
+}
+
+/* Melhorias na barra de scroll */
+.legend-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.legend-panel::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+.legend-panel::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border-radius: 4px;
+}
+
+.legend-panel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.legend-content {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-top: 10px;
+}
