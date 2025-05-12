@@ -42,9 +42,8 @@ Atenção: o sistema já faz essa conversão automaticamente!
 **Linguagem**: Python, Javascript,HTML, CSS <br>
 **Pré-Requisitos**: Ter Python instalado na máquina e rodar o requirements.txt<br>
 **Passo a Passo:**: Rodar no terminal:
-**1** - Rodar o LiveServer do arquivo index.html
-**2** - pip install -r requirements.txt
-**3** - python3 backend/server.py
+**1** - pip install -r requirements.txt
+**2** - python3 backend/server.py
 
 
 ## Uso 
