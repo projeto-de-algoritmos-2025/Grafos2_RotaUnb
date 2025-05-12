@@ -117,4 +117,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
         calculateFullPath(uniquePoints);
     }
+
+    function calculateFullPath(points) {
+        let fullPath = [];
+        let totalDistance = 0;
+        let segments = [];
+
+        const promises = [];
+
+        for (let i = 0; i < points.length - 1; i++) {
+            const start = points[i];
+            const end = points[i + 1];
+
+            promises.push(
+                fetch('/api/calculate-path', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        start: start,
+                        end: end
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Erro na requisição');
+                        return response.json();
+                    })
+            );
+        }
+
+        Promise.all(promises)
+            .then(results => {
+                results.forEach((result, i) => {
+                    if (result.error) throw new Error(result.error);
+
+                    const segmentPath = i === results.length - 1 ?
+                        result.path :
+                        result.path.slice(0, -1);
+
+                    fullPath = [...fullPath, ...segmentPath];
+                    totalDistance += result.distance;
+
+                    segments.push({
+                        from: points[i],
+                        to: points[i + 1],
+                        distance: result.distance,
+                        path: result.path_details
+                    });
+                });
+
+                displayResults(fullPath, totalDistance, segments);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                pathResult.innerHTML = `<p class="error">Erro ao calcular rota: ${error.message}</p>`;
+            })
+            .finally(() => {
+                loadingIndicator.style.display = 'none';
+            });
+    }
 });
