@@ -30,7 +30,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
+    align-items: center; 
     min-height: 100vh;
 }
 
@@ -50,10 +50,10 @@ header h1 {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
-    width: 100%; /* Alterado de 80vw para 100% */
-    max-width: 1200px; /* Limita a largura máxima */
-    margin: 0 auto; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza os painéis internos */
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    justify-content: center;
 }
 
 .controls-panel {
@@ -293,7 +293,6 @@ select[multiple] {
     margin-bottom: 0;
 }
 
-/* Estilo para scrollbar */
 .checkbox-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -332,20 +331,20 @@ select[multiple] {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    max-height: 60vh; /* Altura máxima de 60% da viewport */
-    overflow-y: auto; /* Habilita scroll vertical quando necessário */
+    max-height: 60vh; 
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
 }
 
 .legend-panel ol {
     padding-left: 40px;
-    margin: 0; /* Remove margens padrão */
-    overflow-y: auto; /* Scroll para a lista */
-    flex-grow: 1; /* Ocupa todo o espaço disponível */
+    margin: 0; 
+    overflow-y: auto;
+    flex-grow: 1; 
 }
 
-/* Melhorias na barra de scroll */
+
 .legend-panel::-webkit-scrollbar {
     width: 8px;
 }
