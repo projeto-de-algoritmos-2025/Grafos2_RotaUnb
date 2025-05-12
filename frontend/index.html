@@ -19,11 +19,71 @@
 <body>
     <div class="container">
         <header>
-            <h1>UNB Campus Router</h1>
+            <h1>RotaUnB</h1>
             <p>Encontre o menor caminho entre os pontos do campus</p>
         </header>
 
         <div class="main-content">
+            <div class="legend-panel">
+                <h3>Legenda</h3>    
+                <div class="legend-content">
+                <ol>
+                    <li>Hospital Universitário de Brasília (HUB)</li>
+                    <li>Faculdade de Medicina / Faculdade de Ciências da Saúde (FM/FS)</li>
+                    <li>Faculdade de Direito (FD)</li>
+                    <li>Faculdade de Administração, Contabilidade e Economia (FACE)</li>
+                    <li>Faculdade de Tecnologia (FT)</li>
+                    <li>Faculdade de Educação Física (FEF)</li>
+                    <li>Faculdade de Educação (FE)</li>
+                    <li>Instituto de Química (IQ)</li>
+                    <li>Instituto de Ciências Biológicas (IB)</li>
+                    <li>Pavilhão Multiuso I (PMU I)</li>
+                    <li>Pavilhão Multiuso II (PMU II)</li>
+                    <li>Laboratório de Engenharia Mecânica (SG 9)</li>
+                    <li>Laboratório de Engenharia Elétrica (SG 11)</li>
+                    <li>Laboratório de Engenharia Civil (SG 12)</li>
+                    <li>Oficinas Especiais - Instituto de Artes</li>
+                    <li>Instituto de Artes (IdA)</li>
+                    <li>Departamento de Música (SG 4)</li>
+                    <li>Auditório de Música (SG 8)</li>
+                    <li>Departamento de Música (SG 2)</li>
+                    <li>Centro de Vivência I</li>
+                    <li>Restaurante Universitário (RU)</li>
+                    <li>Instituto Central de Ciências (ICC)</li>
+                    <li>Reitoria</li>
+                    <li>Biblioteca Central (BCE)</li>
+                    <li>Posto Ecológico</li>
+                    <li>Centro de Convivência Negra (CCN)</li>
+                    <li>Prefeitura do Campus (PRC)</li>
+                    <li>Posto Policial PMDF</li>
+                    <li>Colina (Blocos A-J)</li>
+                    <li>Casa do Estudante Universitário - Pós-Graduação (CEU Pós)</li>
+                    <li>Pavilhão Anísio Teixeira (PAT)</li>
+                    <li>Centro João Calmon (CJC)</li>
+                    <li>Centro Comunitário Athos Bulcão</li>
+                    <li>Casa do Estudante Universitário - Graduação, Bloco A</li>
+                    <li>Casa do Estudante Universitário - Graduação, Bloco B</li>
+                    <li>Centro Olímpico (CO)</li>
+                    <li>Centro de Desenvolvimento Sustentável (CDS)</li>
+                    <li>BSAN (BSA Norte) e BSAS (BSA Sul - BSAS)</li>
+                    <li>MASC/Amarelão Sul</li>
+                    <li>MASC/Amarelão Norte</li>
+                    <li>UnBTV</li>
+                    <li>Prédio de Ciência da Computação e Estatística (CIC/EST)</li>
+                    <li>Instituto de Ciência Política e Relações Internacionais (IPOL/IREL)</li>
+                    <li>Instituto de Ciências Sociais (ICS)</li>
+                    <li>Faculdade de Educação do Seridó de Sousa (BAES)</li>
+                    <li>Blocos de Sala de Aula Norte (BSAN)</li>
+                    <li>Auditório de Sala de Aula Norte (BSAN)</li>
+                    <li>Auditório de Sala de Aula Sul (BSAS)</li>
+                    <li>Departamento de Engenharia Florestal (ENF)</li>
+                    <li>Centro de Vivência 2 (SAA, Ouvidoria, Editora UnB e UnBTV)</li>
+                    <li>Memorial Darcy Ribeiro (Beijódromo)</li>
+                    <li>Centro de Atendimento e Estudos Psicológicos (CAEP)</li>
+                    <li>Centro de Excelência em Turismo (CET)</li>
+                </ol>
+            </div>
+            </div>
             <div class="controls-panel">
                 <div class="form-group">
                     <label for="start-point">Ponto de Partida:</label>
@@ -42,6 +102,7 @@
                 <div class="form-group">
                     <label>Pontos Intermediários:</label>
                     <div id="intermediate-points-container" class="checkbox-container">
+                        <!-- Checkboxes serão adicionadas dinamicamente -->
                     </div>
                 </div>
 
