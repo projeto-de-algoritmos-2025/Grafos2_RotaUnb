@@ -10,3 +10,6 @@ class Graph:
         if u in self.vertices and v in self.vertices:
             self.vertices[u][v] = weight
             self.vertices[v][u] = weight
+    
+    def get_neighbors(self, vertex):
+        return self.vertices.get(vertex, {}).items()
