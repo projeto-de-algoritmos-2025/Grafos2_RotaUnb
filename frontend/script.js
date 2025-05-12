@@ -177,4 +177,73 @@ document.addEventListener('DOMContentLoaded', function () {
                 loadingIndicator.style.display = 'none';
             });
     }
+
+    function displayResults(path, distance, segments) {
+        pathResult.innerHTML = '<h3>Caminho Completo:</h3>';
+
+        path.forEach((pointIdx, i) => {
+            const location = locations.find(loc => loc.índice === pointIdx);
+            if (!location) return;
+
+            const step = document.createElement('div');
+            step.className = 'path-step';
+
+            if (i === 0) {
+                step.classList.add('start');
+                step.textContent = `🏁 Partida: (${location.índice}) - ${location.sigla} - ${location.nome}`;
+            } else if (i === path.length - 1) {
+                step.classList.add('end');
+                step.textContent = `🏁 Chegada: (${location.índice}) - ${location.sigla} - ${location.nome}`;
+            } else {
+                step.textContent = `→ (${location.índice}) - ${location.sigla} - ${location.nome}`;
+            }
+
+            pathResult.appendChild(step);
+        });
+
+        distanceResult.innerHTML = `Distância Total: <strong>${distance.toFixed(2)} km</strong>`;
+
+        pathDetails.innerHTML = '<h3>Detalhes do Percurso:</h3>';
+
+        segments.forEach((segment, idx) => {
+            const fromLoc = locations.find(loc => loc.índice === segment.from);
+            const toLoc = locations.find(loc => loc.índice === segment.to);
+
+            const segmentDiv = document.createElement('div');
+            segmentDiv.className = 'path-details-segment';
+            segmentDiv.innerHTML = `
+                <h4>Segmento ${idx + 1}: (${fromLoc.índice}) - ${fromLoc.sigla} → (${toLoc.índice}) - ${toLoc.sigla}</h4>
+                <p>Distância: ${segment.distance.toFixed(2)} km</p>
+                <div class="segment-path"></div>
+                <hr>
+            `;
+
+            const segmentPathDiv = segmentDiv.querySelector('.segment-path');
+            segment.path.forEach((point, i) => {
+                const pointDiv = document.createElement('div');
+                pointDiv.className = 'path-point';
+
+                if (i === 0) {
+                    pointDiv.textContent = `🏁 (${point.index}) - ${point.sigla} - ${point.name}`;
+                } else if (i === segment.path.length - 1) {
+                    pointDiv.textContent = `🏁 (${point.index}) - ${point.sigla} - ${point.name}`;
+                } else {
+                    pointDiv.textContent = `→ (${point.index}) - ${point.sigla} - ${point.name}`;
+                }
+
+                segmentPathDiv.appendChild(pointDiv);
+            });
+
+            pathDetails.appendChild(segmentDiv);
+        });
+    }
+
+    function resetForm() {
+        startSelect.value = '';
+        endSelect.value = '';
+        intermediateSelect.selectedIndex = -1;
+        pathResult.innerHTML = '<p>Selecione os pontos e clique em "Calcular Rota"</p>';
+        distanceResult.innerHTML = '';
+        pathDetails.innerHTML = '';
+    }
 });
