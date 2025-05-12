@@ -42,7 +42,7 @@ Atenção: o sistema já faz essa conversão automaticamente!
 **Linguagem**: Python, Javascript,HTML, CSS <br>
 **Pré-Requisitos**: Ter Python instalado na máquina e rodar o requirements.txt<br>
 **Passo a Passo:**: Rodar no terminal:
-**1** - pip install -r requirements.txt
+**1** - pip install -r requirements.txt<br>
 **2** - python3 backend/server.py
 
 
@@ -53,8 +53,8 @@ Está em dúvida sobre o Mapa? Clique em "Mapa" na barra de navegação ou em "V
 Caso tenha alguma dúvida sobre o sistema, basta acessar a aba Informações na barra de navegação!
 
 ## Outros 
-Link do Repositório: https://github.com/projeto-de-algoritmos-2025/Grafos2_RotaUnb
-Link do Vídeo de Apresentação: https://youtu.be/_9R8MkSSZOA
+Link do Repositório: https://github.com/projeto-de-algoritmos-2025/Grafos2_RotaUnb<br>
+Link do Vídeo de Apresentação: https://youtu.be/_9R8MkSSZOA<br>
 Link do mapa do campus Darcy Ribeiro (UnB): https://noticias.unb.br/images/mapas_campi_unb.pdf
 
 
