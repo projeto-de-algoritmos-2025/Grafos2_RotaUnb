@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pathResult.appendChild(step);
         });
 
-        distanceResult.innerHTML = `Distância Total: <strong>${distance.toFixed(2)} km</strong>`;
+        distanceResult.innerHTML = `Distância Total: <strong>${(distance * 160).toFixed(2)} m</strong>`;
 
         pathDetails.innerHTML = '<h3>Detalhes do Percurso:</h3>';
 
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
             segmentDiv.className = 'path-details-segment';
             segmentDiv.innerHTML = `
                 <h4>Segmento ${idx + 1}: (${fromLoc.índice}) - ${fromLoc.sigla} → (${toLoc.índice}) - ${toLoc.sigla}</h4>
-                <p>Distância: ${segment.distance.toFixed(2)} km</p>
+                <p>Distância: ${(segment.distance.toFixed(2)) * 160} m</p>
                 <div class="segment-path"></div>
                 <hr>
             `;
