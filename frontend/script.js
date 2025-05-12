@@ -51,4 +51,35 @@ document.addEventListener('DOMContentLoaded', function () {
             intermediateSelect.add(option3);
         });
     }
+    
+    mapBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        scale = 1;
+        mapImage.style.transform = `scale(${scale})`;
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    mapImage.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        const zoomIntensity = 0.1;
+        if (e.deltaY < 0) {
+            scale += zoomIntensity;
+        } else {
+            scale = Math.max(1, scale - zoomIntensity);
+        }
+        mapImage.style.transform = `scale(${scale})`;
+    });
+
+    zoomInBtn.addEventListener('click', () => {
+        scale += 0.1;
+        mapImage.style.transform = `scale(${scale})`;
+    });
+
+    zoomOutBtn.addEventListener('click', () => {
+        scale = Math.max(1, scale - 0.1);
+        mapImage.style.transform = `scale(${scale})`;
+    });
 
